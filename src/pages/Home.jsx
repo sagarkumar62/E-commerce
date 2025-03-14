@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncgetproducts } from '../store/reducers/productSlice';
 import { Link, useLocation } from 'react-router-dom';
@@ -7,19 +7,31 @@ import Loading from './Loading';
 const Home = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-
+  
   const searchParams = new URLSearchParams(location.search);
-  const categoryId = searchParams.get("categoryId"); 
+  const categoryId = searchParams.get("categoryId");
+  const searchQuery = searchParams.get("search")?.toLowerCase() || "";
 
   const { data: products } = useSelector(state => state.product);
-  
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   useEffect(() => {
-    dispatch(asyncgetproducts()); // Fetch all products
+    dispatch(asyncgetproducts()); 
   }, [dispatch]);
 
-  const filteredProducts = categoryId
-    ? products.filter((p) => p.category?.id.toString() === categoryId)
-    : products;
+  useEffect(() => {
+    let filtered = products;
+
+    if (categoryId) {
+      filtered = filtered.filter(p => p.category?.id.toString() === categoryId);
+    }
+    
+    if (searchQuery) {
+      filtered = filtered.filter(p => p.title.toLowerCase().includes(searchQuery));
+    }
+
+    setFilteredProducts(filtered);
+  }, [products, categoryId, searchQuery]);
 
   return filteredProducts.length > 0 ? (
     <div className='p-5 flex flex-wrap gap-2 overflow-x-hidden overflow-y-auto'>
