@@ -12,7 +12,7 @@ import Signup from './pages/Signup'
 
 const App = () => {
   return (
-    <div className='w-screen h-screen overflow-auto'>
+    <div className='w-screen h-screen overflow-x-auto overflow-y-hidden'>
       <Nav />
       <Categories />
 

@@ -30,9 +30,9 @@ export const asyncgetproducts =()=> async(dispatch,getState)=>{
 export const asycgetsingleproduct =(id)=> async(dispatch,getState)=>{
     try {
         const {data} = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
-        console.log(id);
+        // console.log(id);
         
-        console.log(data);
+        // console.log(data);
         
         dispatch(addsingleproduct(data))
         
