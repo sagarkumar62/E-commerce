@@ -11,10 +11,8 @@ const Nav = () => {
 
   useEffect(() => {
     if (searchTerms.trim() !== "") {
-      navigate(`/?search=${searchTerms}`);
-    } else {
-      navigate(`/`); 
-    }
+      navigate(`/productlisting/?search=${searchTerms}`);
+    } 
   }, [searchTerms, navigate]);
 
   return (

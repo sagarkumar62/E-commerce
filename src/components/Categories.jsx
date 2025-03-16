@@ -15,7 +15,7 @@ const Categories = () => {
     <div className='w-full bg-red-100 px-5 py-2 flex justify-between overflow-x-auto overflow-y-hidden'>
       <Link to="/" className="p-2 mb-2 font-bold">All Products</Link>
       {category.map((cat) => (
-        <Link to={`/?categoryId=${cat.id}`} key={cat.id} className="p-2 mb-2">
+        <Link to={`/productlisting/?categoryId=${cat.id}`} key={cat.id} className="p-2 mb-2">
           {cat.name}
         </Link>
       ))}
