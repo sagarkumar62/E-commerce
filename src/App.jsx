@@ -8,11 +8,12 @@ import ProductListing from './pages/ProductListing'
 import Details from './pages/Details'
 import Cart from './pages/Cart'
 import Signup from './pages/Signup'
+import Checkout from './pages/Checkout'
 
 
 const App = () => {
   return (
-    <div className='w-screen h-screen overflow-x-auto overflow-y-hidden'>
+    <div className='w-screen h-screen overflow-x-auto '>
       <Nav />
       <Categories />
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/productlisting' element={<ProductListing />}/>
         <Route path='/cart' element={<Cart />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/checkout' element={<Checkout />}/>
         
 
 

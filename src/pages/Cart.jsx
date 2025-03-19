@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../store/reducers/cartSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -28,9 +29,9 @@ const Cart = () => {
       
         <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
       <div className="flex justify-between">
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
         <div className="w-[65%] mr-5 ">
           <ul>
           {cartItems.map((item) => (
@@ -46,18 +47,18 @@ const Cart = () => {
             </li>
           ))}
           
-        </ul>
+          </ul>
         </div>
-      )}
-      <div className="w-[25%] border">
-        <h2 className="bg-zinc-400 text-2xl p-2">Order Handle</h2>
-      <div className="w-full p-5 flex justify-center items-center flex-col gap-10 ">
+        )}
+        <div className="w-[25%] border">
+          <h2 className="bg-zinc-400 text-2xl p-2">Order Handle</h2>
+          <div className="w-full p-5 flex justify-center items-center flex-col gap-10 ">
         
-        <h2>Total price : ${total} </h2>
+            <h2>Total price : ${total} </h2>
         
-        <button className="px-3 py-2 rounded bg-amber-500 border active:scale-95 ">Place Order</button>
-      </div>
-      </div>
+            <Link to="/checkout" className="px-3 py-2 rounded bg-amber-500 border active:scale-95 ">Place Order</Link>
+          </div>
+        </div>
       </div>
     </div>
   );
